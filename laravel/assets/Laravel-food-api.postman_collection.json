@@ -1,0 +1,467 @@
+{
+  "info": {
+    "_exporter_id": "40963077",
+    "_postman_id": "ea7102df-99c1-4bd5-9777-224496fb8634",
+    "name": "Laravel-food-api",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Login",
+      "request": {
+        "body": {
+          "mode": "raw",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          },
+          "raw": "{\n  \"email\": \"andrea@example.com\",\n  \"password\": \"password123\"\n}\n"
+        },
+        "header": [],
+        "method": "POST",
+        "url": {
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "path": [
+            "api",
+            "login"
+          ],
+          "port": "8000",
+          "protocol": "http",
+          "raw": "http://127.0.0.1:8000/api/login"
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Register",
+      "request": {
+        "body": {
+          "mode": "raw",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          },
+          "raw": "{\n  \"name\": \"Andrea\",\n  \"email\": \"andrea@example.com\",\n  \"password\": \"password123\",\n  \"password_confirmation\": \"password123\"\n//   \"role\": \"admin\"\n}"
+        },
+        "header": [],
+        "method": "POST",
+        "url": {
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "path": [
+            "api",
+            "test-upload"
+          ],
+          "port": "8000",
+          "protocol": "http",
+          "raw": "http://127.0.0.1:8000/api/test-upload"
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Logout",
+      "request": {
+        "header": [],
+        "method": "POST",
+        "url": {
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "path": [
+            "api",
+            "logout"
+          ],
+          "port": "8000",
+          "protocol": "http",
+          "raw": "http://127.0.0.1:8000/api/logout"
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Categories",
+      "request": {
+        "auth": {
+          "bearer": [
+            {
+              "key": "token",
+              "type": "string",
+              "value": "{{auth_secret_11k7}}"
+            }
+          ],
+          "type": "bearer"
+        },
+        "header": [],
+        "method": "GET",
+        "url": {
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "path": [
+            "api",
+            "categories"
+          ],
+          "port": "8000",
+          "protocol": "http",
+          "raw": "http://127.0.0.1:8000/api/categories"
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Product",
+      "request": {
+        "auth": {
+          "bearer": [
+            {
+              "key": "token",
+              "type": "string",
+              "value": "{{auth_secret_11k7}}"
+            }
+          ],
+          "type": "bearer"
+        },
+        "header": [],
+        "method": "GET",
+        "url": {
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "path": [
+            "api",
+            "products"
+          ],
+          "port": "8000",
+          "protocol": "http",
+          "raw": "http://127.0.0.1:8000/api/products"
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Product ByID",
+      "request": {
+        "auth": {
+          "bearer": [
+            {
+              "key": "token",
+              "type": "string",
+              "value": "{{auth_secret_1dq9}}"
+            }
+          ],
+          "type": "bearer"
+        },
+        "header": [],
+        "method": "GET",
+        "url": {
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "path": [
+            "api",
+            "products",
+            "999"
+          ],
+          "port": "8000",
+          "protocol": "http",
+          "raw": "http://127.0.0.1:8000/api/products/999"
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create Product",
+      "request": {
+        "auth": {
+          "bearer": [
+            {
+              "key": "token",
+              "type": "string",
+              "value": "{{auth_secret_11k7}}"
+            }
+          ],
+          "type": "bearer"
+        },
+        "body": {
+          "mode": "raw",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          },
+          "raw": "{\n    \"category_id\": 1,\n    \"name\": \"Gaming Mouse 2\",\n    \"description\": \"Mouse gaming RGB 16000 DPI\",\n    \"price\": 350000,\n    \"stock\": 15,\n    \"image_url\": \"https://example.com/images/gaming-mouse.jpg\"\n}\n"
+        },
+        "header": [],
+        "method": "POST",
+        "url": {
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "path": [
+            "api",
+            "products"
+          ],
+          "port": "8000",
+          "protocol": "http",
+          "raw": "http://127.0.0.1:8000/api/products"
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete Product",
+      "request": {
+        "auth": {
+          "bearer": [
+            {
+              "key": "token",
+              "type": "string",
+              "value": "{{auth_secret_11k7}}"
+            }
+          ],
+          "type": "bearer"
+        },
+        "header": [],
+        "method": "DELETE",
+        "url": {
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "path": [
+            "api",
+            "products",
+            "1"
+          ],
+          "port": "8000",
+          "protocol": "http",
+          "raw": "http://127.0.0.1:8000/api/products/1"
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Update Product",
+      "request": {
+        "auth": {
+          "bearer": [
+            {
+              "key": "token",
+              "type": "string",
+              "value": "{{auth_secret_11k7}}"
+            }
+          ],
+          "type": "bearer"
+        },
+        "body": {
+          "mode": "raw",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          },
+          "raw": "{\n  \"price\": 27000,\n  \"stock\": 8\n}\n"
+        },
+        "header": [],
+        "method": "PUT",
+        "url": {
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "path": [
+            "api",
+            "products",
+            "999"
+          ],
+          "port": "8000",
+          "protocol": "http",
+          "raw": "http://127.0.0.1:8000/api/products/999"
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Add To Cart Copy",
+      "request": {
+        "auth": {
+          "bearer": [
+            {
+              "key": "token",
+              "type": "string",
+              "value": "{{auth_secret_11k7}}"
+            }
+          ],
+          "type": "bearer"
+        },
+        "body": {
+          "mode": "raw",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          },
+          "raw": "{\n  \"product_id\": 2,\n  \"quantity\": 2 //default 1 jika tidak di pakai\n}"
+        },
+        "header": [],
+        "method": "POST",
+        "url": {
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "path": [
+            "api",
+            "cart",
+            "items"
+          ],
+          "port": "8000",
+          "protocol": "http",
+          "raw": "http://127.0.0.1:8000/api/cart/items"
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get My Cart",
+      "request": {
+        "auth": {
+          "bearer": [
+            {
+              "key": "token",
+              "type": "string",
+              "value": "{{auth_secret_11k7}}"
+            }
+          ],
+          "type": "bearer"
+        },
+        "body": {
+          "mode": "raw",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          },
+          "raw": "{\n  \"product_id\": 1,\n  \"quantity\": 2 //default 1 jika tidak di pakai\n}"
+        },
+        "header": [],
+        "method": "GET",
+        "url": {
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "path": [
+            "api",
+            "cart",
+            "items"
+          ],
+          "port": "8000",
+          "protocol": "http",
+          "raw": "http://127.0.0.1:8000/api/cart/items"
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete Product From Cart",
+      "request": {
+        "auth": {
+          "bearer": [
+            {
+              "key": "token",
+              "type": "string",
+              "value": "{{auth_secret_11k7}}"
+            }
+          ],
+          "type": "bearer"
+        },
+        "body": {
+          "mode": "raw",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          },
+          "raw": ""
+        },
+        "header": [],
+        "method": "DELETE",
+        "url": {
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "path": [
+            "api",
+            "cart",
+            "items",
+            "1"
+          ],
+          "port": "8000",
+          "protocol": "http",
+          "raw": "http://127.0.0.1:8000/api/cart/items/1"
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "testing",
+      "request": {
+        "header": [],
+        "method": "GET",
+        "url": {
+          "host": [
+            "api",
+            "andrea",
+            "web",
+            "id"
+          ],
+          "path": [
+            "categories"
+          ],
+          "protocol": "https",
+          "raw": "https://api.andrea.web.id/categories"
+        }
+      },
+      "response": []
+    }
+  ]
+}

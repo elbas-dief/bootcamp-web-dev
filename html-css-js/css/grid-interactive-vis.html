@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive CSS Grid</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: #0f1419;
+            color: #e6e6e6;
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .controls {
+            width: 320px;
+            flex-shrink: 0;
+            padding: 24px;
+            background: #161b22;
+            border-right: 1px solid #2a2f37;
+            overflow-y: auto;
+        }
+
+        .stage {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 24px;
+            gap: 20px;
+            min-width: 0;
+        }
+
+        h1 {
+            font-size: 18px;
+            margin: 0 0 6px;
+        }
+
+        .sub {
+            font-size: 12px;
+            color: #8b949e;
+            margin: 0 0 20px;
+        }
+
+        h2 {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #8b949e;
+            margin: 22px 0 8px;
+        }
+
+        .field {
+            margin-bottom: 14px;
+        }
+
+        .field>label {
+            display: block;
+            font-size: 12px;
+            margin-bottom: 6px;
+            color: #c9d1d9;
+        }
+
+        .row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .row input[type=range] {
+            flex: 1;
+            accent-color: #a371f7;
+        }
+
+        .row .val {
+            width: 34px;
+            text-align: right;
+            font-size: 12px;
+            color: #c9d1d9;
+        }
+
+        input[type=text] {
+            width: 100%;
+            background: #21262d;
+            color: #c9d1d9;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            padding: 7px 9px;
+            font-size: 12px;
+            font-family: ui-monospace, monospace;
+        }
+
+        .opts {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .opts button {
+            background: #21262d;
+            color: #c9d1d9;
+            border: 1px solid #30363d;
+            padding: 5px 10px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        .opts button.active {
+            background: #a371f7;
+            border-color: #a371f7;
+            color: #fff;
+        }
+
+        .itemctrl {
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 10px 12px;
+            margin-bottom: 10px;
+        }
+
+        .itemctrl .hd {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 6px;
+        }
+
+        .itemctrl .hd b {
+            font-size: 13px;
+        }
+
+        .itemctrl .row {
+            margin-top: 6px;
+        }
+
+        .itemctrl .row label {
+            width: 64px;
+            font-size: 11px;
+            color: #8b949e;
+        }
+
+        .itemctrl input[type=text] {
+            font-size: 11px;
+            padding: 5px 7px;
+        }
+
+        .addbtn,
+        .rmbtn {
+            background: #21262d;
+            color: #c9d1d9;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+            padding: 5px 10px;
+        }
+
+        .rmbtn {
+            color: #e85d75;
+            padding: 2px 8px;
+        }
+
+        .hint {
+            font-size: 10px;
+            color: #6e7681;
+            margin-top: 3px;
+        }
+
+        .canvas {
+            background: #11161d;
+            border: 1px solid #30363d;
+            border-radius: 10px;
+            flex: 1;
+            min-height: 300px;
+            padding: 16px;
+            display: flex;
+        }
+
+        .grid {
+            width: 100%;
+            display: grid;
+            border: 1px dashed #3a4250;
+            border-radius: 8px;
+            background: rgba(163, 113, 247, .05);
+            transition: all .18s ease;
+        }
+
+        .cell {
+            background: #a371f7;
+            color: #fff;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
+            font-weight: 600;
+            min-height: 42px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, .3);
+            transition: all .18s ease;
+        }
+
+        .cell:nth-child(4n+2) {
+            background: #58a6ff;
+        }
+
+        .cell:nth-child(4n+3) {
+            background: #5db075;
+        }
+
+        .cell:nth-child(4n) {
+            background: #f7b955;
+            color: #1a1a1a;
+        }
+
+        pre {
+            background: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 14px 16px;
+            font-size: 13px;
+            line-height: 1.55;
+            margin: 0;
+            overflow-x: auto;
+        }
+
+        .k {
+            color: #ff7b72;
+        }
+
+        .p {
+            color: #79c0ff;
+        }
+
+        .v {
+            color: #a5d6ff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="controls">
+        <h1>CSS Grid</h1>
+        <p class="sub">Tracks, gaps, alignment & item placement.</p>
+
+        <h2>Tracks</h2>
+        <div class="field">
+            <label>grid-template-columns</label>
+            <input type="text" id="cols" value="repeat(3, 1fr)">
+            <div class="hint">e.g. 1fr 2fr 1fr · repeat(4, 1fr) · 100px auto</div>
+        </div>
+        <div class="field">
+            <label>grid-template-rows</label>
+            <input type="text" id="rows" value="auto">
+            <div class="hint">e.g. auto · 80px 1fr · repeat(2, 100px)</div>
+        </div>
+
+        <h2>Gaps</h2>
+        <div class="field">
+            <label>column-gap</label>
+            <div class="row"><input type="range" id="cgap" min="0" max="40" value="10"><span class="val"
+                    id="cgapv">10</span></div>
+        </div>
+        <div class="field">
+            <label>row-gap</label>
+            <div class="row"><input type="range" id="rgap" min="0" max="40" value="10"><span class="val"
+                    id="rgapv">10</span></div>
+        </div>
+
+        <h2>Alignment</h2>
+        <div class="field">
+            <label>justify-items</label>
+            <div class="opts" data-prop="justifyItems">
+                <button data-v="stretch" class="active">stretch</button>
+                <button data-v="start">start</button>
+                <button data-v="center">center</button>
+                <button data-v="end">end</button>
+            </div>
+        </div>
+        <div class="field">
+            <label>align-items</label>
+            <div class="opts" data-prop="alignItems">
+                <button data-v="stretch" class="active">stretch</button>
+                <button data-v="start">start</button>
+                <button data-v="center">center</button>
+                <button data-v="end">end</button>
+            </div>
+        </div>
+        <div class="field">
+            <label>justify-content</label>
+            <div class="opts" data-prop="justifyContent">
+                <button data-v="start" class="active">start</button>
+                <button data-v="center">center</button>
+                <button data-v="end">end</button>
+                <button data-v="space-between">space-between</button>
+                <button data-v="space-around">space-around</button>
+                <button data-v="space-evenly">space-evenly</button>
+            </div>
+        </div>
+
+        <h2>Items</h2>
+        <div id="itemList"></div>
+        <button class="addbtn" id="addItem">+ Add item</button>
+    </div>
+
+    <div class="stage">
+        <div class="canvas">
+            <div class="grid" id="grid"></div>
+        </div>
+        <pre id="code"></pre>
+    </div>
+
+    <script>
+        const $ = s => document.querySelector(s);
+        const grid = {
+            cols: 'repeat(3, 1fr)', rows: 'auto',
+            cgap: 10, rgap: 10,
+            justifyItems: 'stretch', alignItems: 'stretch', justifyContent: 'start'
+        };
+        let items = [
+            { colSpan: '', rowSpan: '' },
+            { colSpan: '', rowSpan: '' },
+            { colSpan: '', rowSpan: '' },
+            { colSpan: '', rowSpan: '' },
+            { colSpan: '', rowSpan: '' },
+            { colSpan: '', rowSpan: '' },
+        ];
+
+        $('#cols').addEventListener('input', e => { grid.cols = e.target.value; render(); });
+        $('#rows').addEventListener('input', e => { grid.rows = e.target.value; render(); });
+        $('#cgap').addEventListener('input', e => { grid.cgap = +e.target.value; $('#cgapv').textContent = e.target.value; render(); });
+        $('#rgap').addEventListener('input', e => { grid.rgap = +e.target.value; $('#rgapv').textContent = e.target.value; render(); });
+
+        document.querySelectorAll('.opts[data-prop]').forEach(g => {
+            g.addEventListener('click', e => {
+                if (e.target.tagName !== 'BUTTON') return;
+                grid[g.dataset.prop] = e.target.dataset.v;
+                [...g.children].forEach(b => b.classList.toggle('active', b === e.target));
+                render();
+            });
+        });
+
+        $('#addItem').addEventListener('click', () => {
+            if (items.length >= 12) return;
+            items.push({ colSpan: '', rowSpan: '' });
+            renderItemControls(); render();
+        });
+
+        function renderItemControls() {
+            const list = $('#itemList'); list.innerHTML = '';
+            items.forEach((it, i) => {
+                const d = document.createElement('div');
+                d.className = 'itemctrl';
+                d.innerHTML = `
+      <div class="hd"><b>Item ${i + 1}</b>
+        ${items.length > 1 ? `<button class="rmbtn" data-rm="${i}">remove</button>` : ''}</div>
+      <div class="row"><label>col span</label><input type="text" data-i="${i}" data-f="colSpan" value="${it.colSpan}" placeholder="e.g. 2 or 1/3"></div>
+      <div class="row"><label>row span</label><input type="text" data-i="${i}" data-f="rowSpan" value="${it.rowSpan}" placeholder="e.g. 2 or 1/3"></div>`;
+                list.appendChild(d);
+            });
+            list.querySelectorAll('input[type=text]').forEach(inp => {
+                inp.addEventListener('input', e => {
+                    items[+e.target.dataset.i][e.target.dataset.f] = e.target.value.trim(); render();
+                });
+            });
+            list.querySelectorAll('[data-rm]').forEach(b => {
+                b.addEventListener('click', e => { items.splice(+e.target.dataset.rm, 1); renderItemControls(); render(); });
+            });
+        }
+
+        function spanValue(v) {
+            // accept "2" -> span 2, or "1/3" -> 1 / 3, or raw line names
+            if (!v) return '';
+            if (/^\d+$/.test(v)) return `span ${v}`;
+            return v.replace(/\s*\/\s*/, ' / ');
+        }
+
+        function render() {
+            const g = $('#grid');
+            Object.assign(g.style, {
+                gridTemplateColumns: grid.cols,
+                gridTemplateRows: grid.rows,
+                columnGap: grid.cgap + 'px',
+                rowGap: grid.rgap + 'px',
+                justifyItems: grid.justifyItems,
+                alignItems: grid.alignItems,
+                justifyContent: grid.justifyContent
+            });
+
+            g.innerHTML = '';
+            items.forEach((it, i) => {
+                const el = document.createElement('div');
+                el.className = 'cell';
+                el.textContent = i + 1;
+                const cs = spanValue(it.colSpan), rs = spanValue(it.rowSpan);
+                if (cs) el.style.gridColumn = cs;
+                if (rs) el.style.gridRow = rs;
+                g.appendChild(el);
+            });
+
+            const itemCss = items.map((it, i) => {
+                const parts = [];
+                const cs = spanValue(it.colSpan), rs = spanValue(it.rowSpan);
+                if (cs) parts.push(`  <span class="k">grid-column</span>: <span class="v">${cs}</span>;`);
+                if (rs) parts.push(`  <span class="k">grid-row</span>: <span class="v">${rs}</span>;`);
+                if (!parts.length) return '';
+                return `<span class="p">.item:nth-child(${i + 1})</span> {\n${parts.join('\n')}\n}`;
+            }).filter(Boolean).join('\n\n');
+
+            $('#code').innerHTML =
+                `<span class="p">.container</span> {
+  <span class="k">display</span>: <span class="v">grid</span>;
+  <span class="k">grid-template-columns</span>: <span class="v">${grid.cols}</span>;
+  <span class="k">grid-template-rows</span>: <span class="v">${grid.rows}</span>;
+  <span class="k">column-gap</span>: <span class="v">${grid.cgap}px</span>;
+  <span class="k">row-gap</span>: <span class="v">${grid.rgap}px</span>;
+  <span class="k">justify-items</span>: <span class="v">${grid.justifyItems}</span>;
+  <span class="k">align-items</span>: <span class="v">${grid.alignItems}</span>;
+  <span class="k">justify-content</span>: <span class="v">${grid.justifyContent}</span>;
+}`+ (itemCss ? `\n\n` + itemCss : '');
+        }
+
+        renderItemControls();
+        render();
+    </script>
+</body>
+
+</html>

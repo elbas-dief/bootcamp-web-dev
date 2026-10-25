@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <nav>
+        <a href="./index.html">Home Page</a>
+        <a href="./contact.html">Contact</a>
+        <a href="./data-siswa.html">Data Siswa</a>
+        <a href="./about.html">About</a>
+        <a href="./daftar.html">Formulir Pendaftaran</a>
+    </nav>
+
+    <h1>Pendaftaran Kelas Coding</h1>
+    <form>
+    <div>
+        <label for="nama-lengkap">Nama Lengkap</label>
+        <input type="text" name="nama-lengkap" id="nama-lengkap" required>
+    </div>
+    <div>
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email">
+    </div>
+    <div>
+        <label for="tanggal-lahir">Tanggal Lahir</label>
+        <input type="date" name="tanggal-lahir" id="tanggal-lahir">
+    </div>
+    <div>
+        <p>Jenis Kelamin</p>
+        <input type="radio" name="jenis-kelamin" value="L">
+        <label for="laki-laki">Laki-laki</label>
+        <input type="radio" name="jenis-kelamin" value="P">
+        <label for="perempuan">Perempuan</label>
+    </div>
+    <div>
+        <p>Keahlian yang Sudah Dimiliki</p>
+        <input type="checkbox" name="HTML" id="HTML">
+        <label for="HTML">HTML</label>
+        <input type="checkbox" name="CSS" id="CSS">
+        <label for="HTML">CSS</label>
+        <input type="checkbox" name="javasript" id="javasript">
+        <label for="HTML">JavaScript</label>
+        <input type="checkbox" name="python" id="python">
+        <label for="HTML">Python</label>
+        <input type="checkbox" name="lainnya" id="lainnya">
+        <label for="HTML">Lainnya</label>
+    </div>
+    <div>
+        <label for="kota-asal">Kota Asal</label>
+        <select name="kota-asal" id="kota-asal">
+            <option value="empty">--Kota Asal--</option>
+            <option value="jakarta">Jakarta</option>
+            <option value="bekasi">Bekasi</option>
+            <option value="tangerang">Tangerang</option>
+            <option value="depok">Depok</option>
+            <option value="bogor">Bogor</option>
+        </select>
+    </div>
+    <div>
+        <label for="alasan-mendaftar">Alasan Mendaftar</label><br>
+        <textarea name="alasan-mendaftar" id="alasan-mendaftar" rows="5" placeholder="Isi alasan..." cols="100"></textarea>
+    </div>
+    <!-- for terkoneksi dengan id, name (WAJIB) adalah data yang akan dikirim -->
+    <div>
+        <input type="checkbox" name="persetujuan" id="persetujuan">
+        <label for="persetujuan">Saya setuju dengan syarat dan ketentuan</label>
+    </div>
+    <div>
+        <button type="submit">Daftar Sekarang</button>
+    </div>
+
+    </form>
+
+</body>
+
+</html>
