@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive CSS Box Model</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: #0f1419;
+            color: #e6e6e6;
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .controls {
+            width: 320px;
+            flex-shrink: 0;
+            padding: 24px;
+            background: #161b22;
+            border-right: 1px solid #2a2f37;
+            overflow-y: auto;
+        }
+
+        .stage {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            gap: 24px;
+        }
+
+        h1 {
+            font-size: 18px;
+            margin: 0 0 20px;
+            letter-spacing: .3px;
+        }
+
+        h2 {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #8b949e;
+            margin: 24px 0 10px;
+        }
+
+        .group {
+            margin-bottom: 8px;
+        }
+
+        .row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .row label {
+            width: 64px;
+            font-size: 13px;
+        }
+
+        .row input[type=range] {
+            flex: 1;
+            accent-color: var(--accent);
+        }
+
+        .row .val {
+            width: 44px;
+            text-align: right;
+            font-variant-numeric: tabular-nums;
+            font-size: 13px;
+            color: #c9d1d9;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 2px;
+            flex-shrink: 0;
+        }
+
+        .margin-c {
+            --accent: #f7b955;
+        }
+
+        .border-c {
+            --accent: #e85d75;
+        }
+
+        .padding-c {
+            --accent: #5db075;
+        }
+
+        .content-c {
+            --accent: #58a6ff;
+        }
+
+        /* Box model visual */
+        .bm-margin {
+            background: rgba(247, 185, 85, .20);
+            border: 1px dashed #f7b955;
+            display: inline-block;
+            position: relative;
+            transition: padding .12s;
+        }
+
+        .bm-border {
+            background: rgba(232, 93, 117, .22);
+            border-color: #e85d75;
+            border-style: solid;
+            position: relative;
+            transition: border-width .12s;
+        }
+
+        .bm-padding {
+            background: rgba(93, 176, 117, .22);
+            position: relative;
+            transition: padding .12s;
+        }
+
+        .bm-content {
+            background: rgba(88, 166, 255, .30);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-size: 13px;
+            color: #fff;
+            transition: width .12s, height .12s;
+        }
+
+        .tag {
+            position: absolute;
+            font-size: 10px;
+            letter-spacing: .5px;
+            padding: 1px 5px;
+            border-radius: 3px;
+            top: 2px;
+            left: 2px;
+            background: rgba(0, 0, 0, .35);
+            color: #fff;
+        }
+
+        .stage-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 380px;
+            width: 100%;
+        }
+
+        .toggles {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .toggles button {
+            background: #21262d;
+            color: #c9d1d9;
+            border: 1px solid #30363d;
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        .toggles button.active {
+            background: #1f6feb;
+            border-color: #1f6feb;
+            color: #fff;
+        }
+
+        pre {
+            background: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 16px;
+            font-size: 13px;
+            line-height: 1.6;
+            width: 100%;
+            max-width: 560px;
+            overflow-x: auto;
+            margin: 0;
+        }
+
+        .k {
+            color: #ff7b72;
+        }
+
+        .p {
+            color: #79c0ff;
+        }
+
+        .v {
+            color: #a5d6ff;
+        }
+
+        .total {
+            font-size: 13px;
+            color: #8b949e;
+        }
+
+        .total b {
+            color: #e6e6e6;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="controls">
+        <h1>CSS Box Model</h1>
+
+        <h2><span class="dot" style="background:#58a6ff"></span>Content</h2>
+        <div class="content-c group">
+            <div class="row"><label>width</label><input type="range" id="cw" min="40" max="280" value="160"><span
+                    class="val" id="cwv">160</span></div>
+            <div class="row"><label>height</label><input type="range" id="ch" min="40" max="200" value="80"><span
+                    class="val" id="chv">80</span></div>
+        </div>
+
+        <h2><span class="dot" style="background:#5db075"></span>Padding</h2>
+        <div class="padding-c group">
+            <div class="row"><label>padding</label><input type="range" id="pad" min="0" max="60" value="20"><span
+                    class="val" id="padv">20</span></div>
+        </div>
+
+        <h2><span class="dot" style="background:#e85d75"></span>Border</h2>
+        <div class="border-c group">
+            <div class="row"><label>border</label><input type="range" id="bor" min="0" max="30" value="8"><span
+                    class="val" id="borv">8</span></div>
+        </div>
+
+        <h2><span class="dot" style="background:#f7b955"></span>Margin</h2>
+        <div class="margin-c group">
+            <div class="row"><label>margin</label><input type="range" id="mar" min="0" max="60" value="24"><span
+                    class="val" id="marv">24</span></div>
+        </div>
+
+        <h2>box-sizing</h2>
+        <div class="toggles" id="bsToggle">
+            <button data-bs="content-box" class="active">content-box</button>
+            <button data-bs="border-box">border-box</button>
+        </div>
+        <p class="total" id="totalText" style="margin-top:16px"></p>
+    </div>
+
+    <div class="stage">
+        <div class="stage-wrap">
+            <div class="bm-margin" id="mBox">
+                <span class="tag" style="background:#a9772b">margin</span>
+                <div class="bm-border" id="bBox">
+                    <span class="tag" style="background:#a83b4f">border</span>
+                    <div class="bm-padding" id="pBox">
+                        <span class="tag" style="background:#3d7a52">padding</span>
+                        <div class="bm-content" id="cBox">content</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <pre id="code"></pre>
+    </div>
+
+    <script>
+        const $ = id => document.getElementById(id);
+        const state = { cw: 160, ch: 80, pad: 20, bor: 8, mar: 24, bs: 'content-box' };
+
+        const inputs = { cw: 'cwv', ch: 'chv', pad: 'padv', bor: 'borv', mar: 'marv' };
+        Object.keys(inputs).forEach(k => {
+            $(k).addEventListener('input', e => {
+                state[k] = +e.target.value;
+                $(inputs[k]).textContent = e.target.value;
+                render();
+            });
+        });
+
+        $('bsToggle').addEventListener('click', e => {
+            if (e.target.tagName !== 'BUTTON') return;
+            state.bs = e.target.dataset.bs;
+            [...$('bsToggle').children].forEach(b => b.classList.toggle('active', b === e.target));
+            render();
+        });
+
+        function render() {
+            const { cw, ch, pad, bor, mar, bs } = state;
+            // content box dimensions adjust for border-box so the *visual* content shrinks
+            let contentW = cw, contentH = ch;
+            if (bs === 'border-box') {
+                contentW = Math.max(10, cw - 2 * pad - 2 * bor);
+                contentH = Math.max(10, ch - 2 * pad - 2 * bor);
+            }
+            $('cBox').style.width = contentW + 'px';
+            $('cBox').style.height = contentH + 'px';
+            $('pBox').style.padding = pad + 'px';
+            $('bBox').style.borderWidth = bor + 'px';
+            $('mBox').style.padding = mar + 'px';
+
+            // totals
+            const innerW = (bs === 'border-box' ? cw : cw + 2 * pad + 2 * bor);
+            const innerH = (bs === 'border-box' ? ch : ch + 2 * pad + 2 * bor);
+            const outerW = innerW + 2 * mar;
+            const outerH = innerH + 2 * mar;
+            $('totalText').innerHTML = `Rendered box: <b>${innerW}×${innerH}px</b><br>Incl. margin: <b>${outerW}×${outerH}px</b>`;
+
+            $('code').innerHTML =
+                `<span class="p">.box</span> {
+  <span class="k">box-sizing</span>: <span class="v">${bs}</span>;
+  <span class="k">width</span>: <span class="v">${cw}px</span>;
+  <span class="k">height</span>: <span class="v">${ch}px</span>;
+  <span class="k">padding</span>: <span class="v">${pad}px</span>;
+  <span class="k">border</span>: <span class="v">${bor}px solid</span>;
+  <span class="k">margin</span>: <span class="v">${mar}px</span>;
+}`;
+        }
+        render();
+    </script>
+</body>
+
+</html>

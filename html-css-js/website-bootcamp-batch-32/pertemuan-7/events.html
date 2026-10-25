@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Belajar Events</title>
+</head>
+<body>
+    <button onclick="alert('Testing')">Click me!</button>
+    <input type="text" onchange="alert('test input')" placeholder="onchange">
+    <input type="text" oninput="alert('test input')" placeholder="oninput">
+    
+    <input type="checkbox" onchange="alert('Clicked!')">
+
+    <select id="selectKota">
+        <option value="Bekasi">Bekasi</option>
+        <option value="Jakarta">Jakarta</option>
+        <option value="Surabaya">Surabaya</option>
+        <option value="Tangerang">Tangerang</option>
+    </select>
+
+    <script>
+        // Cara ke-1
+        // function pilihKota(element) {
+        //     const kota = element.value
+
+        //     console.log(`Kota ${kota} telah dipilih!`)
+        // }
+
+        // Cara ke-2
+        const selectKota = document.getElementById("selectKota")
+        selectKota.addEventListener('change', function () {
+            const kota = selectKota.value
+
+            console.log(`Kota ${kota} telah dipilih!`)
+        })
+
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,329 @@
+* {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    padding: 0;
+    margin: 0;
+}
+
+nav {
+    background: linear-gradient(#2626a5, #161677, rgb(38, 38, 165));
+}
+
+.navbar-parent {
+    max-width: 1200px;
+    margin: auto;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* width: 100%; */
+    padding: 10px 25px 10px 25px;
+    /* padding: 0px 15px; */
+    margin: auto;
+}
+
+.navbar-brand {
+    color: white;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    gap: 12px;
+}
+
+.nav-bar {
+    color: white;
+    display: flex;
+    padding: 0px 10px 0px 10px;
+    gap: 10px;
+}
+
+.nav-bar a {
+    text-decoration: none;
+    color: white;
+    transition: transform 0.3s;
+}
+
+.nav-item {
+    padding: 5px 10px;
+    margin: 0px;
+}
+
+.nav-item:hover {
+    background-color: rgb(86, 86, 245);
+    border-radius: 5px;
+    transform: scale(1.1);
+}
+
+.custom-toggler {
+    display: none;
+    background-color: transparent;
+    border: 0px solid rgba(255, 255, 255, 0.5);
+    border-radius: 6px;
+    padding: 10px 12px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+}
+
+.custom-toggler-icon {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background-color: rgba(255, 255, 255, 0.7);
+    position: relative;
+}
+
+.custom-toggler-icon::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: -6px;
+    width: 22px;
+    height: 2px;
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+.custom-toggler-icon::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 6px;
+    width: 22px;
+    height: 2px;
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+@media (max-width: 768px) {
+    /* Sembunyikan deretan menu teks laptop */
+    .nav-bar {
+        display: none;
+    }
+
+    /* Paksa tombol hamburger kustom untuk muncul di sisi kanan luar */
+    .custom-toggler {
+        display: flex;
+        /* Mengubah status dari 'none' menjadi 'flex' */
+    }
+
+    .navbar-brand {
+        font-size: 19px;
+        /* Sedikit memperkecil ukuran teks agar pas di HP */
+    }
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 50px;
+    background-image:
+        linear-gradient(hsla(240, 69%, 28%, 0.4), hsla(240, 69%, 28%, 0.7)),
+        url(https://raw.githubusercontent.com/elbas-dief/starterkit/refs/heads/main/assets/bg-headline.png);
+    background-size: cover;
+    background-position: center;
+    color: white;
+}
+
+.headline {
+    margin: 5px;
+}
+
+.sub-headline {
+    margin: 10px;
+    /* background-color: white; */
+    /* padding: 0px 300px; */
+    max-width: 900px;
+}
+
+.pelajari {
+    background: linear-gradient(#2626a5);
+    margin: 5px;
+    border-radius: 5px;
+    padding: 7px;
+    text-decoration: none;
+    font-size: 12px;
+    color: white;
+    font-weight: 500;
+    box-shadow: 0px 0px 4px 1px white inset;
+    transition: transform 0.3s;
+}
+
+.pelajari:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 0px 4px 1px white inset, 0px 0px 2px 1px rgba(0, 0, 0, 0.5);
+}
+
+/* button {
+    background: linear-gradient(#2626a5);
+    margin: 5px;
+    border-radius: 5px;
+    padding: 7px;
+    text-decoration: none;
+    font-size: 12px;
+    color: white;
+    font-weight: 500;
+    box-shadow: 0px 0px 4px 1px white inset;
+    transition: transform 0.3s;
+}
+
+.button:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 0px 4px 1px white inset, 0px 0px 2px 1px rgba(0, 0, 0, 0.5);
+} */
+
+.about-us {
+    text-align: center;
+}
+
+.about-us-content {
+    max-width: 1200px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 30px;
+}
+
+.section-service {
+    background-image: linear-gradient(rgba(255, 255, 255, 0.2)), url(https://raw.githubusercontent.com/elbas-dief/starterkit/refs/heads/main/assets/bg-section.png);
+    background-size: cover;
+    background-position: center;
+}
+
+.service-content {
+    /* background-color: rgb(238, 238, 238); */
+    padding: 10px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.our-service {
+    text-align: center;
+}
+
+.service-card {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* grid-template-columns: repeat(auto-fit, minmax(20px)); */
+    /* gap: 0px; */
+    /* min-height: 200px; */
+}
+
+.service-card a {
+    text-decoration: none;
+}
+
+@media screen and (max-width: 1024px) {
+    .service-card {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .sub-headline {
+        width: 900px;
+    }
+
+    .about-us-content {
+        max-width: 900px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .service-card {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .sub-headline {
+        width: 300px;
+    }
+
+    .about-us-content {
+        max-width: 500px;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    .service-card {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .sub-headline {
+        width: 300px;
+    }
+
+    .about-us-content {
+        max-width: 300px;
+    }
+}
+
+.card {
+    color: rgb(255, 255, 255);
+    box-shadow: 0px 0px 10px white inset;
+    border-radius: 10px;
+    text-align: center;
+    /* padding: 5px; */
+    align-content: center;
+    height: 200px;
+    margin: 0px 10px 20px 10px;
+    transition: transform 0.5s, box-shadow 0.5s;
+    animation: position 2s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 0px 10px white inset, 0px 0px 10px hsla(240, 63%, 40%, 0.8);
+}
+
+.bangun {
+    background-image: linear-gradient(hsla(240, 63%, 40%, 0.8)), url(https://asset.kompas.com/crops/x5gmRVWN7ymzwsz7k0NVtOqBlvM=/100x67:900x600/1200x800/data/photo/2020/12/23/5fe2932454f98.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+.renovasi {
+    background-image: linear-gradient(hsla(240, 63%, 40%, 0.8)), url(https://harianproperty.com/uploads/1519880614.jpg);
+    background-size: cover;
+}
+
+.desain-rab {
+    background-image: linear-gradient(hsla(240, 63%, 40%, 0.8)), url(https://blog.bankmega.com/wp-content/uploads/2025/03/Rencana-Anggaran-Biaya-RAB-Pengertian-Fungsi-Contohnya.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+/* .title-service {
+    text-align: center;
+    border-radius: 10px;
+    background-color: white;
+    width: 90%;
+    color: #161677;
+} */
+
+footer {
+    background-color: #161677;
+    color: white;
+    text-align: center;
+    font-size: small;
+    padding: 1px;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes position {
+    from {
+        transform: translateY(-50px);
+    }
+
+    to {
+        transform: translateY(0px);
+    }
+}
+
+body {
+    animation: position 1s, fade-in 1s;
+}

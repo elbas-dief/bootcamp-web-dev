@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        button {
+            background-color: blue;
+            color: white;
+            padding: 0.8em;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            transition: all 0.2s ease-in-out;
+            animation: berkedip 1s infinite;
+        }
+
+        button:hover {
+            /* display: none; */
+            background-color: red;
+            cursor: pointer;
+
+            /* transform: scale(1.8) rotate(15deg); */
+        }
+
+        button:active {
+            background-color: black;
+        }
+
+        @keyframes berkedip {
+            0% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
+            
+            100% {
+                opacity: 1;
+            }
+        }
+        
+    </style>
+</head>
+
+<body>
+
+
+
+    <header>
+        <h1>Nama Website</h1>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="contact.html"><strong>Contact</strong></a>
+    </nav>
+
+    <main>
+        <section>
+            <h2>Halaman Contact</h2>
+            <p>Ini adalah konten utama halaman.</p>
+        </section>
+
+        <section>
+            <form action="#" method="POST">
+
+                <label for="nama">Nama Lengkap:</label><br />
+                <input type="text" id="nama" name="nama" placeholder="Nama lengkap kamu" required /><br /><br />
+
+                <label for="email">Email:</label><br />
+                <input type="email" id="email" name="email" placeholder="email@contoh.com" required /><br /><br />
+
+                <label for="subjek">Subjek:</label><br />
+                <input type="text" id="subjek" name="subjek" placeholder="Topik pesan" /><br /><br />
+
+                <p>Kategori Pesan:</p>
+                <input type="radio" id="pertanyaan" name="kategori" value="pertanyaan" />
+                <label for="pertanyaan">Pertanyaan</label>
+                <input type="radio" id="saran" name="kategori" value="saran" />
+                <label for="saran">Saran</label>
+                <input type="radio" id="lainnya" name="kategori" value="lainnya" />
+                <label for="lainnya">Lainnya</label><br /><br />
+
+                <label for="pesan">Pesan:</label><br />
+                <textarea id="pesan" name="pesan" rows="5" placeholder="Tulis pesanmu..."></textarea><br /><br />
+
+                <input type="checkbox" id="setuju" name="setuju" required />
+                <label for="setuju">Saya setuju dengan syarat dan ketentuan</label><br /><br />
+
+                <button type="submit">Kirim Pesan</button>
+
+            </form>
+        </section>
+
+        <aside>
+            <p>Info tambahan atau sidebar di sini.</p>
+        </aside>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Nama Website. Hak cipta dilindungi.</p>
+    </footer>
+
+</body>
+
+</html>

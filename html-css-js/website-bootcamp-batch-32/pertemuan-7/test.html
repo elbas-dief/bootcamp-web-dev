@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testing Javascript DOM scripts</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+<body>
+    <h1 id="title">Testing Javascript</h1>
+
+    <button class="btn">Button 1</button>
+    <button class="btn">Button 2</button>
+    <button class="btn">Button 3</button>
+    <button class="btn">Button 4</button>
+
+    <div id="daftarProduk">
+        <!-- Diisi dengan data produk -->
+    </div>
+
+    <script src="dom.js"></script>
+
+    <script>
+        // Ubah h1 Testing javascript menjadi "Materi Pertemuan 7"
+        const title = document.getElementById('title')
+        title.innerText = "Pertemuan 7"
+
+        const list_button = document.getElementsByClassName('btn')
+        list_button[0].innerText = "Special Button"
+        list_button[0].style.background = "gold"
+    </script>
+</body>
+</html>

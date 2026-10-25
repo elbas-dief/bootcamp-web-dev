@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic CSS</title>
+    <link rel="stylesheet" href="basic.css">
+</head>
+<body>
+    <header>
+        <h3>Website contoh</h3>
+        
+        <nav>
+            <ul>
+                <li>Home</li>
+                <li>About</li>
+                <li>Contact</li>
+            </ul>
+        </nav>
+
+    </header>
+
+    <h1>Judul Halaman</h1>
+    <h2>Ini Sub-Judul</h2>
+
+    <article>
+        <h2>Judul Artikel</h2>
+        <p>04 Juli 2026</p>
+
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam mollitia aspernatur inventore vero, quisquam perspiciatis cum accusantium itaque quo quam voluptatibus quas deleniti, sapiente nam officiis atque numquam corporis reprehenderit?</p>
+    </article>
+
+    <article class="special-article">
+        <h2>Judul Artikel</h2>
+        <p>04 Juli 2026</p>
+    
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam mollitia aspernatur inventore vero, quisquam
+            perspiciatis cum accusantium itaque quo quam voluptatibus quas deleniti, sapiente nam officiis atque numquam
+            corporis reprehenderit?</p>
+    </article>
+
+    <article>
+        <h2>Judul Artikel</h2>
+        <p>04 Juli 2026</p>
+    
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam mollitia aspernatur inventore vero, quisquam
+            perspiciatis cum accusantium itaque quo quam voluptatibus quas deleniti, sapiente nam officiis atque numquam
+            corporis reprehenderit?</p>
+    </article>
+
+    <button class="buy" onclick="toggleButton(this)">Buy!</button>
+
+    <p>Haltev memiliki kursus <span style="color: red;">Website Bootcamp</span> yang dilaksanakan di kantor secara offline</p>
+
+
+    <script>
+        function toggleButton(element) {
+            console.log(element)
+            element.disabled = true;
+        }
+    </script>
+</body>
+</html>

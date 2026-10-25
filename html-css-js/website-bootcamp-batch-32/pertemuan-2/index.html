@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        table {
+            width: 100%;
+            text-align: center;
+            /* font-weight: ; */
+        }
+
+        textarea {
+            width: 50%;
+        }
+
+        .gender-input {
+            
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <a href="./index.html">HomePage</a>
+        <a href="./contact.html">Contact</a>
+        <a href="./about.html">About</a>
+    </nav>
+
+    <h1>Ini halaman index</h1>
+
+    <h2>Daftar User</h2>
+    <table border="1">
+        <!-- Untuk baris judul, berisi nama kolom -->
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Nama User</th>
+                <th>Umur</th>
+                <th>Kota Asal</th>
+            </tr>
+        </thead>
+
+        <!-- Untuk isi dari table -->
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Haltev</td>
+                <td>20</td>
+                <td>Bekasi</td>
+            </tr>
+
+            <tr>
+                <td>2</td>
+                <td>Joko</td>
+                <td>40</td>
+                <td>Jakarta</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>Kirim Feedback Anda...</h3>
+    <textarea name="Feedback" id="feedback" rows="5"></textarea>
+
+    <div>
+        <label>Username</label>
+        <input type="password" name="username" id="username">
+    </div>
+
+    <p>Jenis Kelamin:</p>
+    <div class="gender-input">
+        <input type="radio" id="laki" name="gender" value="L" />
+        <label for="laki">Laki-laki</label>
+        <input type="radio" id="perempuan" name="gender1" value="P" />
+        <label for="perempuan">Perempuan</label>
+    </div>
+
+    <!-- Dropdown -->
+    <label for="kota">Kota:</label>
+    <select id="kota" name="kota">
+        <option value="">-- Pilih Kota --</option>
+        <option value="jakarta">Jakarta</option>
+        <option value="bandung">Bandung</option>
+        <option value="surabaya">Surabaya</option>
+    </select>
+
+    <button>Daftar Sekarang</button>
+</body>
+
+</html>

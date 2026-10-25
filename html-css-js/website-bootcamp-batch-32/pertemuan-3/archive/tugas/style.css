@@ -1,0 +1,222 @@
+/* ============================================
+   CONTOH TUGAS CSS — KARTU PROFIL
+   Pertemuan 3: Basic CSS 1
+   Haltev IT Learning Center
+   ============================================ */
+
+
+/* ──────────────────────────────────────────
+   1. TAG SELECTOR
+   Menarget elemen HTML langsung pakai nama tag-nya
+   ────────────────────────────────────────── */
+
+/* Reset dasar biar tampilan konsisten di semua browser */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Styling halaman utama */
+body {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+
+/* Tag h2 di dalam card */
+h2 {
+  font-size: 22px;
+  color: #2d2d2d;
+  margin-top: 12px;
+}
+
+/* Tag p di dalam card (default) */
+p {
+  color: #555;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* Tag hr */
+hr {
+  border: none;
+  border-top: 1px solid #e0e0e0;
+}
+
+/* Tag button (dasar) */
+button {
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 28px;
+}
+
+
+/* ──────────────────────────────────────────
+   2. CLASS SELECTOR
+   Pakai titik (.) sebelum nama class
+   ────────────────────────────────────────── */
+
+/* Judul di atas kartu */
+.judul-halaman {
+  color: white;
+  font-size: 26px;
+  margin-bottom: 6px;
+  text-align: center;
+}
+
+.subjudul {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 13px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+/* Kartu utama — ini contoh BOX MODEL */
+.card {
+  background-color: white;
+
+  /* BOX MODEL: padding → jarak dalam */
+  padding: 32px 28px;
+
+  /* BOX MODEL: margin → jarak luar */
+  margin: 0 auto;
+
+  /* BOX MODEL: border → garis tepi */
+  border: 2px solid #e8e8e8;
+
+  /* border-radius → sudut melengkung */
+  border-radius: 20px;
+
+  /* Lebar kartu */
+  width: 100%;
+  max-width: 320px;
+
+  /* Tata letak tengah */
+  text-align: center;
+
+  /* Shadow supaya terlihat mengambang */
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+
+  /* Animasi: kartu naik saat di-hover (lihat bagian .card:hover di bawah) */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Foto profil */
+.foto-profil {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;           /* membuat lingkaran */
+  border: 4px solid #667eea;    /* border warna ungu */
+  object-fit: cover;
+  background-color: #f0f0f0;
+}
+
+/* Teks jabatan */
+.jabatan {
+  color: #667eea;
+  font-size: 13px;
+  font-weight: bold;
+  margin-top: 4px;
+  margin-bottom: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Garis pemisah */
+.garis {
+  margin: 0 0 14px 0;
+}
+
+/* Deskripsi */
+.deskripsi {
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 22px;
+}
+
+/* Grup tombol */
+.tombol-grup {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+/* Tombol utama (Follow) */
+.btn-utama {
+  background-color: #667eea;
+  color: white;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Tombol sekunder (Message) */
+.btn-sekunder {
+  background-color: white;
+  color: #667eea;
+  border: 2px solid #667eea !important;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+
+/* ──────────────────────────────────────────
+   3. ID SELECTOR
+   Pakai tanda pagar (#) sebelum nama id
+   ID dipakai untuk elemen yang UNIK (hanya satu di halaman)
+   ────────────────────────────────────────── */
+
+#profile-card {
+  /* Animasi fade-in saat halaman pertama dibuka */
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+#profile-name {
+  color: #2d2d2d;
+}
+
+
+/* ──────────────────────────────────────────
+   4. ANIMASI SEDERHANA
+
+   a) Hover pada kartu → kartu sedikit naik
+   b) Hover pada tombol → warna berubah
+   c) Keyframes → kartu muncul dari bawah saat halaman dibuka
+   ────────────────────────────────────────── */
+
+/* a) Kartu naik saat di-hover */
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* b) Tombol utama berubah warna saat di-hover */
+.btn-utama:hover {
+  background-color: #5a6fd6;
+  transform: scale(1.05);
+}
+
+/* b) Tombol sekunder berubah saat di-hover */
+.btn-sekunder:hover {
+  background-color: #667eea;
+  color: white;
+  transform: scale(1.05);
+}
+
+/* c) Animasi keyframes: fade in dari bawah */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

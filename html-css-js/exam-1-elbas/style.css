@@ -1,0 +1,508 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    font-family: Montserrat, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    overflow-x: hidden
+}
+
+/* Variabel */
+
+:root {
+    --warna-utama: #0b2e53;
+    --warna-kedua: #eba207;
+    --warna-ketiga: #373737;
+    --warna-keempat: #f4f4f4;
+}
+
+/* Header */
+
+header {
+    background: linear-gradient(var(--warna-utama), #114074);
+    position: sticky;
+    top: 0px;
+    width: 100%;
+    z-index: 1;
+}
+
+nav {
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+}
+
+/* Burger Menu */
+
+.burger-menu div {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    transition: all 0.3s ease;
+}
+
+.burger-menu {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 10px;
+}
+
+ul {
+    display: flex;
+    flex-direction: row;
+    margin: 0px;
+    padding: 0px;
+    /* gap: 25px; */
+}
+
+li {
+    padding: 12px;
+    list-style: none;
+    transition: transform 0.5s;
+}
+
+li:hover {
+    color: var(--warna-utama);
+    background-color: #eba207;
+    border-radius: 6px;
+    font-weight: 600;
+    transform: scale(1.1);
+    translate: 0px;
+}
+
+/* Hero Section */
+
+.hero-section {
+    background-image:
+        linear-gradient(hsla(211, 75%, 11%, 0.8)), url(asset/hero_image.avif);
+    background-position: center;
+    background-size: cover;
+    height: 500px;
+    align-content: center;
+}
+
+.hero-content {
+    color: white;
+    max-width: 90%;
+    margin: auto;
+}
+
+.hero-portfolio {
+    background-color: var(--warna-kedua);
+    border-color: var(--warna-kedua);
+    font-weight: 600;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin: 2px 5px;
+    transition: transform 0.5s;
+}
+
+.hero-portfolio:hover {
+    background-color: color-mix(in srgb, var(--warna-kedua), black 20%);
+    border-color: color-mix(in srgb, var(--warna-kedua), black 20%);
+    transform: scale(1.1);
+}
+
+.hero-portfolio:active {
+    background-color: #124c89;
+    border-color: #124c89;
+}
+
+.hero-hubungi {
+    border-color: white;
+    background-color: transparent;
+    border-radius: 5px;
+    color: white;
+    font-weight: 600;
+    padding: 5px 10px;
+    margin: 2px 5px;
+    transition: transform 0.5s;
+}
+
+.hero-hubungi:hover {
+    background-color: color-mix(in srgb, var(--warna-utama), black 20%);
+    transform: scale(1.1);
+}
+
+.hero-hubungi:active {
+    background-color: white;
+    color: var(--warna-utama);
+}
+
+/* Tentang Kami */
+
+.tentang-kami {
+    display: flex;
+    flex-direction: row;
+    background-color: #f4f4f4;
+    flex-wrap: nowrap;
+}
+
+.image-tentang-kami {
+    max-width: 50%;
+    height: auto;
+    object-fit: cover;
+    flex: 1 1 40px;
+}
+
+.content-tentang-kami {
+    padding: 20px 80px;
+    margin: 0;
+    text-align: justify;
+    max-width: 100%;
+}
+
+/* Layanan Kami */
+
+.service {
+    background-color: var(--warna-utama);
+    text-align: center;
+    padding: 3em;
+}
+
+.service-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.card-item {
+    background-color: white;
+    margin: 1em;
+    text-align: start;
+    border-radius: 15px;
+    padding: 1em 2em;
+    height: 88%;
+}
+
+.icon-service {
+    font-size: x-large;
+}
+
+.title-service {
+    font-weight: bold;
+}
+
+.bangun-rumah {
+    background-image: linear-gradient(rgba(255, 255, 255, 0.900)), url(asset/bangun_rumah.png);
+    background-size: cover;
+    box-shadow: 0px 0px 5px 4px #b2b2b2 inset;
+    color: #0b2e53;
+    transition: transform 0.3s;
+}
+
+.renovasi-rumah {
+    background-image: linear-gradient(rgba(255, 255, 255, 0.900)), url(asset/renovasi_rumah.png);
+    background-size: cover;
+    box-shadow: 0px 0px 5px 4px #b2b2b2 inset;
+    color: #0b2e53;
+    transition: transform 0.3s;
+}
+
+.desain-rumah {
+    background-image: linear-gradient(rgba(255, 255, 255, 0.900)), url(asset/desain_arsitektur.png);
+    background-size: cover;
+    box-shadow: 0px 0px 5px 4px #b2b2b2 inset;
+    color: #0b2e53;
+    transition: transform 0.3s;
+}
+
+.bangun-rumah:hover,
+.renovasi-rumah:hover,
+.desain-rumah:hover {
+    transform: scale(1.1);
+    box-shadow: black;
+}
+
+.service-card a {
+    text-decoration: none;
+}
+
+.desc-service {
+    text-align: justify;
+}
+
+/* Portfolio */
+
+.portfolio {
+    background-color: var(--warna-keempat);
+    text-align: center;
+    padding: 3em;
+}
+
+.card-portfolio {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2em;
+    /* display: flex;
+    flex-direction: row; */
+}
+
+.pf-card {
+    color: white;
+    height: 220px;
+    border-radius: 15px;
+    /* display: flex;
+    flex-direction: column; */
+    place-content: center;
+    /* margin: 1em; */
+    padding: 2em;
+}
+
+.title-portfolio,
+.lokasi_p {
+    margin: 0;
+}
+
+.title-portfolio {
+    font-weight: bold;
+    font-size: 17px;
+}
+
+.portfolio-1 {
+    /* background-image: linear-gradient(hsla(211, 77%, 18%, 0.700)), url(asset/portfolio_1.png); */
+    background-image: url(asset/portfolio_1.png);
+    background-size: cover;
+}
+
+.portfolio-2 {
+    background-image: url(asset/portfolio_2.png);
+    background-size: cover;
+
+}
+
+.portfolio-3 {
+    background-image: url(asset/portfolio_3.png);
+    background-size: cover;
+}
+
+.portfolio-4 {
+    background-image: url(asset/portfolio_4.png);
+    background-size: cover;
+}
+
+.portfolio-5 {
+    background-image: url(asset/portfolio_5.png);
+    background-size: cover;
+}
+
+.portfolio-6 {
+    background-image: url(asset/portfolio_6.png);
+    background-size: cover;
+}
+
+.pf-card {
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.5s, box-shadow 0.2s;
+}
+
+.pf-card:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.41);
+}
+
+.pf-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(hsla(211, 77%, 18%, 0.700));
+    transition: transform 0.5s ease;
+    /* z-index: 1; */
+    /* opacity: 1; */
+}
+
+.pf-card:hover::before {
+    transform: translateX(100%);
+}
+
+.pf-card>* {
+    position: relative;
+    /* z-index: 2; */
+}
+
+/* Hubungi Kami */
+
+.hubungi-kami {
+    padding: 3em;
+}
+
+/* .title-hubungi-kami {
+    padding-bottom: 40px;
+} */
+
+.hubungi-kami-content {
+    background-color: #0b2e53;
+    color: white;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    text-align: justify;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.hubungi-kami-item {
+    padding: 30px;
+    flex: 1 1 500px;
+}
+
+iframe {
+    border-radius: 15px;
+    /* margin-left: 0px; */
+}
+
+/* Footer */
+
+footer {
+    background: linear-gradient(var(--warna-utama), #114074);
+    padding: 3em;
+    color: white;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.footer-card {
+    /* background-color: #eba207; */
+    border-radius: 15px;
+    padding: 1em;
+}
+
+.footer-title {
+    margin-bottom: 1em;
+    font-weight: bold;
+}
+
+.footer-nav a:hover {
+    color: #eba207;
+    transform: scale(1.1);
+}
+
+/* All Grouping */
+
+.sub-title {
+    font-weight: bold;
+    /* padding-bottom: 20px; */
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.content {
+    margin-top: 40px;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+@media screen and (max-width: 1024px) {
+    .tentang-kami {
+        flex-wrap: nowrap;
+    }
+
+    .service-card {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .card-portfolio {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .burger-menu {
+        display: flex;
+    }
+
+    ul {
+        display: flex;
+        flex-direction: column;
+        background: linear-gradient(var(--warna-utama), #114074);
+        width: 60%;
+        height: calc(100vh - 70px);
+        position: fixed;
+        right: 0;
+        top: 100%;
+        padding-top: 40px;
+        visibility: hidden;
+        transform: translateX(100%);
+        transition: visibility 1s ease-in-out, 0.5s ease-in-out;
+        overflow: hidden;
+    }
+
+    .active {
+        display: flex;
+        visibility: visible;
+        opacity: 1;
+        width: 60%;
+        transform: translateX(0%);
+        transition: transform 0.5s ease-in-out;
+        overflow: hidden;
+    }
+
+    ul li:hover {
+        transform: scale(1);
+        background-color: #eba207;
+        border-radius: 0;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .tentang-kami {
+        flex-wrap: wrap;
+    }
+
+    .image-tentang-kami {
+        max-width: 100%;
+    }
+
+    .service-card {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .card-portfolio {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media screen and (max-width: 480px) {
+    .tentang-kami {
+        flex-wrap: wrap;
+    }
+
+    .image-tentang-kami {
+        max-width: 100%;
+    }
+
+    .service-card {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .card-portfolio {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    iframe {
+        width: 75%;
+    }
+}

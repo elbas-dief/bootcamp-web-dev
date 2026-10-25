@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive CSS Flexbox</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: #0f1419;
+            color: #e6e6e6;
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .controls {
+            width: 300px;
+            flex-shrink: 0;
+            padding: 24px;
+            background: #161b22;
+            border-right: 1px solid #2a2f37;
+            overflow-y: auto;
+        }
+
+        .stage {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 24px;
+            gap: 20px;
+            min-width: 0;
+        }
+
+        h1 {
+            font-size: 18px;
+            margin: 0 0 6px;
+        }
+
+        .sub {
+            font-size: 12px;
+            color: #8b949e;
+            margin: 0 0 20px;
+        }
+
+        h2 {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #8b949e;
+            margin: 22px 0 8px;
+        }
+
+        .field {
+            margin-bottom: 12px;
+        }
+
+        .field>label {
+            display: block;
+            font-size: 12px;
+            margin-bottom: 6px;
+            color: #c9d1d9;
+        }
+
+        .opts {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .opts button {
+            background: #21262d;
+            color: #c9d1d9;
+            border: 1px solid #30363d;
+            padding: 5px 10px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        .opts button.active {
+            background: #1f6feb;
+            border-color: #1f6feb;
+            color: #fff;
+        }
+
+        .row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .row input[type=range] {
+            flex: 1;
+            accent-color: #1f6feb;
+        }
+
+        .row .val {
+            width: 32px;
+            text-align: right;
+            font-size: 12px;
+            color: #c9d1d9;
+        }
+
+        .itemctrl {
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 10px 12px;
+            margin-bottom: 10px;
+        }
+
+        .itemctrl .hd {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+
+        .itemctrl .hd b {
+            font-size: 13px;
+        }
+
+        .itemctrl .mini {
+            font-size: 11px;
+            color: #8b949e;
+        }
+
+        .itemctrl .row {
+            margin-top: 6px;
+        }
+
+        .itemctrl .row label {
+            width: 54px;
+            font-size: 11px;
+            color: #8b949e;
+        }
+
+        .addbtn,
+        .rmbtn {
+            background: #21262d;
+            color: #c9d1d9;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+            padding: 5px 10px;
+        }
+
+        .rmbtn {
+            color: #e85d75;
+            padding: 2px 8px;
+        }
+
+        /* Stage */
+        .canvas {
+            background:
+                linear-gradient(#1c222b 1px, transparent 1px) 0 0/100% 28px,
+                #11161d;
+            border: 1px solid #30363d;
+            border-radius: 10px;
+            flex: 1;
+            min-height: 300px;
+            padding: 16px;
+            display: flex;
+        }
+
+        .flex {
+            width: 100%;
+            display: flex;
+            border: 1px dashed #3a4250;
+            border-radius: 8px;
+            background: rgba(31, 111, 235, .05);
+            transition: all .18s ease;
+        }
+
+        .item {
+            background: #1f6feb;
+            color: #fff;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: 600;
+            min-width: 48px;
+            min-height: 44px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, .3);
+            transition: all .18s ease;
+        }
+
+        .item:nth-child(3n+2) {
+            background: #5db075;
+        }
+
+        .item:nth-child(3n) {
+            background: #f7b955;
+            color: #1a1a1a;
+        }
+
+        pre {
+            background: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 14px 16px;
+            font-size: 13px;
+            line-height: 1.55;
+            margin: 0;
+            overflow-x: auto;
+        }
+
+        .k {
+            color: #ff7b72;
+        }
+
+        .p {
+            color: #79c0ff;
+        }
+
+        .v {
+            color: #a5d6ff;
+        }
+
+        .c {
+            color: #8b949e;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="controls">
+        <h1>Flexbox</h1>
+        <p class="sub">Container & item properties, live.</p>
+
+        <h2>Container</h2>
+        <div class="field">
+            <label>flex-direction</label>
+            <div class="opts" data-prop="flexDirection">
+                <button data-v="row" class="active">row</button>
+                <button data-v="row-reverse">row-reverse</button>
+                <button data-v="column">column</button>
+                <button data-v="column-reverse">column-rev</button>
+            </div>
+        </div>
+        <div class="field">
+            <label>justify-content</label>
+            <div class="opts" data-prop="justifyContent">
+                <button data-v="flex-start" class="active">flex-start</button>
+                <button data-v="center">center</button>
+                <button data-v="flex-end">flex-end</button>
+                <button data-v="space-between">space-between</button>
+                <button data-v="space-around">space-around</button>
+                <button data-v="space-evenly">space-evenly</button>
+            </div>
+        </div>
+        <div class="field">
+            <label>align-items</label>
+            <div class="opts" data-prop="alignItems">
+                <button data-v="stretch" class="active">stretch</button>
+                <button data-v="flex-start">flex-start</button>
+                <button data-v="center">center</button>
+                <button data-v="flex-end">flex-end</button>
+                <button data-v="baseline">baseline</button>
+            </div>
+        </div>
+        <div class="field">
+            <label>flex-wrap</label>
+            <div class="opts" data-prop="flexWrap">
+                <button data-v="nowrap" class="active">nowrap</button>
+                <button data-v="wrap">wrap</button>
+                <button data-v="wrap-reverse">wrap-reverse</button>
+            </div>
+        </div>
+        <div class="field" id="alignContentField" style="display:none">
+            <label>align-content</label>
+            <div class="opts" data-prop="alignContent">
+                <button data-v="stretch" class="active">stretch</button>
+                <button data-v="flex-start">flex-start</button>
+                <button data-v="center">center</button>
+                <button data-v="space-between">space-between</button>
+                <button data-v="space-around">space-around</button>
+            </div>
+        </div>
+        <div class="field">
+            <label>gap</label>
+            <div class="row"><input type="range" id="gap" min="0" max="40" value="10"><span class="val"
+                    id="gapv">10</span></div>
+        </div>
+
+        <h2>Items</h2>
+        <div id="itemList"></div>
+        <button class="addbtn" id="addItem">+ Add item</button>
+    </div>
+
+    <div class="stage">
+        <div class="canvas">
+            <div class="flex" id="flex"></div>
+        </div>
+        <pre id="code"></pre>
+    </div>
+
+    <script>
+        const $ = s => document.querySelector(s);
+        const container = {
+            flexDirection: 'row', justifyContent: 'flex-start', alignItems: 'stretch',
+            flexWrap: 'nowrap', alignContent: 'stretch', gap: 10
+        };
+        let items = [
+            { grow: 0, shrink: 1, basis: 'auto', alignSelf: 'auto' },
+            { grow: 0, shrink: 1, basis: 'auto', alignSelf: 'auto' },
+            { grow: 0, shrink: 1, basis: 'auto', alignSelf: 'auto' },
+        ];
+
+        // container option buttons
+        document.querySelectorAll('.opts[data-prop]').forEach(group => {
+            group.addEventListener('click', e => {
+                if (e.target.tagName !== 'BUTTON') return;
+                const prop = group.dataset.prop;
+                container[prop] = e.target.dataset.v;
+                [...group.children].forEach(b => b.classList.toggle('active', b === e.target));
+                render();
+            });
+        });
+        $('#gap').addEventListener('input', e => {
+            container.gap = +e.target.value; $('#gapv').textContent = e.target.value; render();
+        });
+        $('#addItem').addEventListener('click', () => {
+            if (items.length >= 8) return;
+            items.push({ grow: 0, shrink: 1, basis: 'auto', alignSelf: 'auto' });
+            renderItemControls(); render();
+        });
+
+        function renderItemControls() {
+            const list = $('#itemList');
+            list.innerHTML = '';
+            items.forEach((it, i) => {
+                const d = document.createElement('div');
+                d.className = 'itemctrl';
+                d.innerHTML = `
+      <div class="hd"><b>Item ${i + 1}</b>
+        ${items.length > 1 ? `<button class="rmbtn" data-rm="${i}">remove</button>` : ''}</div>
+      <div class="row"><label>grow</label><input type="range" min="0" max="4" value="${it.grow}" data-i="${i}" data-f="grow"><span class="mini" data-m="grow-${i}">${it.grow}</span></div>
+      <div class="row"><label>shrink</label><input type="range" min="0" max="4" value="${it.shrink}" data-i="${i}" data-f="shrink"><span class="mini" data-m="shrink-${i}">${it.shrink}</span></div>
+      <div class="row"><label>align-self</label>
+        <select data-i="${i}" data-f="alignSelf" style="flex:1;background:#21262d;color:#c9d1d9;border:1px solid #30363d;border-radius:6px;padding:4px;font-size:12px;">
+          ${['auto', 'flex-start', 'center', 'flex-end', 'stretch', 'baseline'].map(o => `<option ${it.alignSelf === o ? 'selected' : ''}>${o}</option>`).join('')}
+        </select>
+      </div>`;
+                list.appendChild(d);
+            });
+            list.querySelectorAll('input[type=range]').forEach(r => {
+                r.addEventListener('input', e => {
+                    const i = +e.target.dataset.i, f = e.target.dataset.f;
+                    items[i][f] = +e.target.value;
+                    list.querySelector(`[data-m="${f}-${i}"]`).textContent = e.target.value;
+                    render();
+                });
+            });
+            list.querySelectorAll('select').forEach(s => {
+                s.addEventListener('change', e => {
+                    items[+e.target.dataset.i][e.target.dataset.f] = e.target.value; render();
+                });
+            });
+            list.querySelectorAll('[data-rm]').forEach(b => {
+                b.addEventListener('click', e => {
+                    items.splice(+e.target.dataset.rm, 1); renderItemControls(); render();
+                });
+            });
+        }
+
+        function render() {
+            // show align-content only when wrapping
+            $('#alignContentField').style.display = container.flexWrap !== 'nowrap' ? 'block' : 'none';
+
+            const f = $('#flex');
+            Object.assign(f.style, {
+                flexDirection: container.flexDirection,
+                justifyContent: container.justifyContent,
+                alignItems: container.alignItems,
+                flexWrap: container.flexWrap,
+                alignContent: container.alignContent,
+                gap: container.gap + 'px'
+            });
+
+            f.innerHTML = '';
+            items.forEach((it, i) => {
+                const el = document.createElement('div');
+                el.className = 'item';
+                el.textContent = i + 1;
+                el.style.flexGrow = it.grow;
+                el.style.flexShrink = it.shrink;
+                el.style.alignSelf = it.alignSelf;
+                // vary intrinsic size a touch so baseline/stretch read clearly
+                el.style.fontSize = (12 + (i % 3) * 6) + 'px';
+                f.appendChild(el);
+            });
+
+            // code
+            const itemCss = items.map((it, i) => {
+                const parts = [];
+                if (it.grow !== 0 || it.shrink !== 1) parts.push(`  <span class="k">flex</span>: <span class="v">${it.grow} ${it.shrink} ${it.basis}</span>;`);
+                if (it.alignSelf !== 'auto') parts.push(`  <span class="k">align-self</span>: <span class="v">${it.alignSelf}</span>;`);
+                if (!parts.length) return '';
+                return `<span class="p">.item:nth-child(${i + 1})</span> {\n${parts.join('\n')}\n}`;
+            }).filter(Boolean).join('\n\n');
+
+            $('#code').innerHTML =
+                `<span class="p">.container</span> {
+  <span class="k">display</span>: <span class="v">flex</span>;
+  <span class="k">flex-direction</span>: <span class="v">${container.flexDirection}</span>;
+  <span class="k">justify-content</span>: <span class="v">${container.justifyContent}</span>;
+  <span class="k">align-items</span>: <span class="v">${container.alignItems}</span>;
+  <span class="k">flex-wrap</span>: <span class="v">${container.flexWrap}</span>;${container.flexWrap !== 'nowrap' ? `\n  <span class="k">align-content</span>: <span class="v">${container.alignContent}</span>;` : ''}
+  <span class="k">gap</span>: <span class="v">${container.gap}px</span>;
+}`+ (itemCss ? `\n\n` + itemCss : '');
+        }
+
+        renderItemControls();
+        render();
+    </script>
+</body>
+
+</html>

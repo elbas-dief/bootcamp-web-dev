@@ -1,0 +1,151 @@
+h1 {
+    color: red;
+    transition: all 0.2s ease-in-out;
+}
+
+h1:hover {
+    color: blue;
+}
+
+article {
+    margin-top: 4em;
+    /* 1.5em = 24px*/
+}
+
+article h2 {
+    color: blue;
+}
+
+body>h2 {
+    color: orchid;
+}
+
+.special-article h2 {
+    color: gold;
+}
+
+header {
+    background-color: lightblue;
+    display: flex;
+    justify-content: space-between;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1em;
+}
+
+@keyframes berkedip {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes contoh {
+    0% {
+
+    }
+
+    25% {
+
+    }
+
+    75% {
+        
+    }
+}
+
+@keyframes wiggle {
+    0% {
+        transform: translate(calc(sin(0deg) * 5px), calc(cos(0deg) * 5px)) rotate(calc(sin(0deg) * 5deg));
+    }
+
+    10% {
+        transform: translate(calc(sin(137deg) * 5px), calc(cos(263deg) * 5px)) rotate(calc(sin(193deg) * 5deg));
+    }
+
+    20% {
+        transform: translate(calc(sin(281deg) * 5px), calc(cos(97deg) * 5px)) rotate(calc(sin(37deg) * 5deg));
+    }
+
+    30% {
+        transform: translate(calc(sin(53deg) * 5px), calc(cos(311deg) * 5px)) rotate(calc(sin(229deg) * 5deg));
+    }
+
+    40% {
+        transform: translate(calc(sin(199deg) * 5px), calc(cos(41deg) * 5px)) rotate(calc(sin(157deg) * 5deg));
+    }
+
+    50% {
+        transform: translate(calc(sin(331deg) * 5px), calc(cos(173deg) * 5px)) rotate(calc(sin(293deg) * 5deg));
+    }
+
+    60% {
+        transform: translate(calc(sin(89deg) * 5px), calc(cos(239deg) * 5px)) rotate(calc(sin(61deg) * 5deg));
+    }
+
+    70% {
+        transform: translate(calc(sin(251deg) * 5px), calc(cos(113deg) * 5px)) rotate(calc(sin(347deg) * 5deg));
+    }
+
+    80% {
+        transform: translate(calc(sin(179deg) * 5px), calc(cos(307deg) * 5px)) rotate(calc(sin(83deg) * 5deg));
+    }
+
+    90% {
+        transform: translate(calc(sin(317deg) * 5px), calc(cos(29deg) * 5px)) rotate(calc(sin(211deg) * 5deg));
+    }
+
+    100% {
+        transform: translate(calc(sin(0deg) * 5px), calc(cos(0deg) * 5px)) rotate(calc(sin(0deg) * 5deg));
+    }
+}
+
+.buy {
+    padding: 1em;
+    background-color: blue;
+    color: white;
+    font-weight: bold;
+    font-style: italic;
+    text-decoration: underline;
+    border: 0;
+    animation: wiggle 1.2s ease-in-out infinite;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.buy:hover {
+    background-color: lightblue;
+}
+
+.buy:active {
+    background-color: red;
+}
+
+.buy:disabled {
+    background-color: black;
+}
+
+@keyframes masukDariKiri {
+    from {
+        opacity: 0;
+        transform: translateX(-40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+h2 {
+    animation: masukDariKiri 0.5s ease forwards;
+}

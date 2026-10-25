@@ -1,0 +1,1 @@
+console.log(`${Beras 5 kg} x ${3} = Rp ${40000}`)

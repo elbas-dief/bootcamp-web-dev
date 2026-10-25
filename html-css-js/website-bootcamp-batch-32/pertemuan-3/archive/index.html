@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        h2 {
+            text-align: center;
+            font-size: 2.5em;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+
+        .teks-biru {
+            color: #2976e1;
+        }
+
+        .teks-merah {
+            color: red;
+        }
+
+        
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Nama Website</h1>
+    </header>
+
+    <nav>
+        <a href="index.html"><strong>Home</strong></a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
+    <main>
+        <section>
+            <h2 class="teks-biru">Selamat Datang</h2>
+            <h2 class="teks-merah">Ini juga judul dengan h2</h2>
+            <p class="teks-merah">Ini adalah konten utama halaman.</p>
+        </section>
+
+        <section>
+            <table border="1">
+
+                <!-- THEAD: Baris judul kolom -->
+                <thead>
+                    <tr>
+                        <th>Nama</th>
+                        <th>Umur</th>
+                        <th>Kota</th>
+                    </tr>
+                </thead>
+
+                <!-- TBODY: Baris data -->
+                <tbody>
+                    <tr>
+                        <td>Budi</td>
+                        <td>20</td>
+                        <td>Jakarta</td>
+                    </tr>
+                    <tr>
+                        <td>Ani</td>
+                        <td>22</td>
+                        <td>Bandung</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section>
+            <table border="1">
+                <!-- colspan: sel melebar ke samping (gabung kolom) -->
+                <tr>
+                    <td colspan="2">Sel ini menempati 2 kolom</td>
+                    <td>Kolom 3</td>
+                </tr>
+
+                <!-- rowspan: sel memanjang ke bawah (gabung baris) -->
+                <tr>
+                    <td rowspan="2">Sel ini menempati 2 baris</td>
+                    <td>Data B</td>
+                </tr>
+                <tr>
+                    <td>Data C</td>
+                </tr>
+            </table>
+        </section>
+
+        <section>
+            <h2>Ini adalah table</h2>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th colspan="4">Jadwal Kelas Web Development</th>
+                    </tr>
+                    <tr>
+                        <th>Pertemuan</th>
+                        <th>Materi</th>
+                        <th>Durasi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Basic HTML 1</td>
+                        <td>2 jam</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Basic HTML 2 & Multi-Page</td>
+                        <td>2 jam</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Basic CSS 1</td>
+                        <td>2 jam</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section>
+            <label for="nama">Nama Lengkap:</label>
+            <input type="text" id="nama" name="nama" placeholder="Masukkan nama..." required />
+
+            <label for="email">Email</label>
+            <input type="text" placeholder="Masukkan Email">
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" />
+
+
+            <p>Jenis Kelamin:</p>
+            <input type="radio" id="laki" name="gender" value="L" />
+            <label for="laki">Laki-laki</label>
+
+            <input type="radio" id="perempuan" name="gender" value="P" />
+            <label for="perempuan">Perempuan</label>
+
+            <label for="kota">Kota Asal:</label>
+            <select id="kota" name="kota">
+                <option value="">-- Pilih Kota --</option>
+                <option value="jakarta">Jakarta</option>
+                <option value="bandung">Bandung</option>
+                <option value="surabaya">Surabaya</option>
+                <option value="yogyakarta">Yogyakarta</option>
+            </select>
+        </section>
+
+        <aside>
+            <p>Info tambahan atau sidebar di sini.</p>
+        </aside>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Nama Website. Hak cipta dilindungi.</p>
+    </footer>
+
+</body>
+
+</html>
