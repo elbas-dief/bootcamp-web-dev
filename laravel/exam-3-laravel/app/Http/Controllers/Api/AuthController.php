@@ -35,10 +35,35 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         // Bikin sendiri
+        $data = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required', 'string'],
+        ]);
+
+        $user = User::where('email', $data['email'])->first();
+
+        if(!$user || Hash::check($data['password'], $user->password)) { // Bisa akses password karena $user sudah fetch data seluruh 1 user
+            return response()->json([
+                'message' => 'Email atau Password salah!',
+            ], 401);      
+        }
+
+        $token = $user->createToken('api-token')->plainTextToken;
+
+        return response()->json([
+            'message' => 'Login berhasil',
+            'user' => $user,
+            'token' => $token,
+        ]);
     }
 
     public function logout(Request $request)
     {
         // Bikin sendiri
+        $request->user()->currentAccessToken()->delete();
+
+        return response()->json([
+            'message' => 'logout berhasil',
+        ]);
     }
 }
