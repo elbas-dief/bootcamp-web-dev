@@ -42,7 +42,7 @@ class AuthController extends Controller
 
         $user = User::where('email', $data['email'])->first();
 
-        if(!$user || Hash::check($data['password'], $user->password)) { // Bisa akses password karena $user sudah fetch data seluruh 1 user
+        if(!$user || !Hash::check($data['password'], $user->password)) { // Bisa akses password karena $user sudah fetch data seluruh 1 user
             return response()->json([
                 'message' => 'Email atau Password salah!',
             ], 401);      

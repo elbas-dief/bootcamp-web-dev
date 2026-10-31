@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreCartItemRequest;
+use App\Http\Resources\CartItemResource;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
@@ -12,16 +14,18 @@ class CartController extends Controller
         $items = $request->user()
         ->cartItems()->with('product.category')->get();
 
-        return response()->json(['data => $items']);
+        return response()->json(['data' => $items]);
     }
 
-    public function store(Request $request)
+    public function store(StoreCartItemRequest $request)
     {
-        $data = $request->validate([
-            'product_id' => ['required', 'exists:products,id'],
-            'quantity' => ['sometimes', 'integer', 'min:1'],
-        ]);
+        // Dipihdan ke StoreCartItemRequest
+        // $data = $request->validate([
+        //     'product_id' => ['required', 'exists:products,id'],
+        //     'quantity' => ['sometimes', 'integer', 'min:1'],
+        // ]);
 
+        $data = $request->validated();
         $user = $request->user();
         $quantity = $data['quantity'] ?? 1;
 
@@ -35,7 +39,7 @@ class CartController extends Controller
 
         return response()->json([
             'message' => 'Produk berhasil ditambahkan ke cart.',
-            'data' => $item,
+            'data' => new CartItemResource($item),
         ], 201);
     }
 
