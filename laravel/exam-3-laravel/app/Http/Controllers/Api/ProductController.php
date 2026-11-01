@@ -42,8 +42,8 @@ class ProductController extends Controller
 
         return response()->json([
             'message' => 'Produk berhasil dibuat!',
-            'data' => $product
-        ]);
+            'data' => new ProductResource($product),
+        ], 201);
     }
 
     public function update(UpdateProductRequest $request, string $id)
