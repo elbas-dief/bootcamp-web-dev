@@ -1,0 +1,47 @@
+{
+    "posts": [
+        {
+            "id": "1",
+            "title": "a title",
+            "views": 100,
+            "name": "Andi",
+            "imageUrl": "https://img.magnific.com/free-vector/young-man-with-glasses-avatar_1308-175763.jpg?semt=ais_hybrid&w=740&q=80"
+        },
+        {
+            "id": "2",
+            "title": "another title",
+            "views": 200,
+            "name": "Budi",
+            "imageUrl": "https://img.magnific.com/premium-vector/man-avatar-profile-picture-isolated-background-avatar-profile-picture-man_1293239-4841.jpg?semt=ais_hybrid&w=740&q=80"
+        },
+        {
+            "id": "2",
+            "title": "Bekasi",
+            "views": 200,
+            "name": "Siska",
+            "imageUrl": "https://t4.ftcdn.net/jpg/09/61/69/75/360_F_961697523_EFd1m8P4tdcwB0TYvlQAagqKR1xHSuwk.jpg"
+        },
+        {
+            "id": "2",
+            "title": "Jakarta",
+            "views": 200,
+            "name": "Rosa",
+            "imageUrl": "https://img.magnific.com/free-vector/woman-with-braided-hair-illustration_1308-174675.jpg?semt=ais_hybrid&w=740&q=80"
+        }
+    ],
+    "comments": [
+        {
+            "id": "1",
+            "text": "a comment about post 1",
+            "postId": "1"
+        },
+        {
+            "id": "2",
+            "text": "another comment about post 1",
+            "postId": "1"
+        }
+    ],
+    "profile": {
+        "name": "typicode"
+    }
+}

@@ -1,13 +1,63 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>intro-reactjs</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            body {
+                display: flex;
+                height: 100vh;
+                justify-content: center;
+                align-items: center;
+            }
+
+            /* .button {
+            } */
+        </style>
+    </head>
+<body>
+    <!-- <button>Aku Tombol</button> -->
+     <!-- <div class="root"></div>
+
+     <script>
+        const root = document.querySelector(".root");
+
+        const element = document.createElement
+     </script> -->
+
+       <div id="root"></div>
+
+        <!-- 1. Import React & ReactDOM -->
+        <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+        <!-- Tambahkan Babel Standalone -->
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+        <script type="text/babel">
+            const container = document.querySelector("#root");
+            const root = ReactDOM.createRoot(container);
+
+            // CARA 1 PAKAI HTML, CSS JS (DOM)
+            // const element = document.createElement("h1");
+            // element.textContent = "Hello From JS!";
+
+            // root.appendChild(element);
+
+            // CARA 2 PAKAI REACT
+            // Membuat elemen dengan JavaScript murni via React.createElement
+            // const element = React.createElement("h1", {
+            //     className: "heading-1",
+            //     children: "Hello From React!",
+            // });
+            // const root = ReactDOM.createRoot(container);
+            // root.render(element);
+
+            // CARA 3 PAKAI BABEL
+            // Sekarang kita bisa menggunakan JSX!
+            const element = <h1 className="heading-1">Hello From React with JSX!</h1>;
+            root.render(element);
+        </script>
+</body>
 </html>
