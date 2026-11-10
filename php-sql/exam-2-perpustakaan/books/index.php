@@ -49,10 +49,12 @@ $result = $conn->query($sql)->fetch_all(MYSQLI_ASSOC);
     }
     ?>
 
-    <h1>Daftar Buku</h1>
-    <a href="/books/create.php" class="btn btn-primary">+ Tambah Buku</a>
+    <div style="display: flex; flex-direction: column; align-items: flex-start;">
+        <h1>Daftar Buku</h1>
+        <a href="/books/create.php" class="btn btn-primary" style="align-self: flex-end;">+ Tambah Buku</a>
+    </div>
 
-    <table style="width: 100%;">
+    <table style="width: 100%; margin-top:10px">
         <thead>
             <th style="width: 15%;">Cover</th>
             <th style="width: 40%;">Judul/Pengarang</th>
